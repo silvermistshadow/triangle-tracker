@@ -5,17 +5,21 @@
 //NOT a triangle: The sum of the lengths of any two sides of a triangle is less than or equal to the length of the third side.
 
 var triangleType = function(side1, side2, side3) {
-  if ((side1 == side2) && (side2 == side3)) {
-      return "Equilateral"
-  }
-  else if ((side1 == side2)^(side2 == side3)) {
-      return "Isosceles"
-  }
-  else if ((side1 == side3) && (side2 != side3)) {
-    return "Isosceles"
-  }
-  else if () {
+  if (((side1 + side2) > side3)^((side2 + side3) > side1)^((side1 + side3) > side2)) {
+    if ((side1 == side2) && (side2 == side3)) {
+        return "Equilateral"
+    }
+    else if (((side1 == side2) && (side2 != side3)) || ((side2 == side3) && (side1 != side2)) || ((side1 == side3) && (side2 != side3))) {
+        return "Isosceles"
+    }
 
+    else if ((side1 != side2) && (side2 != side3) && (side1 != side3)) {
+        return "Scalene"
+    }
+
+  }
+  else {
+    return "Not a triangle. The sum of the lengths of any two sides must be greater than the third side."
   }
 
 };
